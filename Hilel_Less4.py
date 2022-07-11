@@ -5,8 +5,8 @@ print(sum(int(i) for i in my_string.split() if i.isdigit()))
 # Lesson 4 task 2
 my_list = ["агония", "абзац", "Артем", "Андрей",
            "аккум", "Абрам", "Апостол", "Август"]
-my_new_list = []
-[my_new_list.append(i) for i in my_list if i.lower().startswith('а')]
+
+my_new_list = [i for i in my_list if i.lower().startswith('а')]
 print(my_new_list)
 
 # Lesson 4  task3
