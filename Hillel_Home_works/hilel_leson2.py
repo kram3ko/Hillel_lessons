@@ -62,3 +62,6 @@ n = '0'
 while a != n:
     print(a[::-1])
     a=input('Повторите ввод: ')
+
+
+print("end")
