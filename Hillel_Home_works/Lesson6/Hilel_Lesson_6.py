@@ -26,7 +26,7 @@ anna = {
 }
 
 
-def validate_dj_data(data):
+def verify(data):
     if len(data) != 6:
         print("The number of arguments is not correct!")
         return False
@@ -49,53 +49,55 @@ def validate_dj_data(data):
 
     return data
 
-def add_user(data):
+
+def add_new_dj(data):
     user_input = input("Enter new DJ's data: ")
     dj_data = user_input.split(",")
-    validated_data = validate_dj_data(dj_data)
+    verify_user = verify(dj_data)
 
-    if validated_data is not False:
+    if verify_user is not False:
         new_dj_data = {
-            "name": validated_data[0],
-            "age": validated_data[1],
-            "equipment": validated_data[2],
-            "discography": validated_data[3],
-            "salary": validated_data[4],
-            "genre": validated_data[5],
+            "name": verify_user[0],
+            "age": verify_user[1],
+            "equipment": verify_user[2],
+            "discography": verify_user[3],
+            "salary": verify_user[4],
+            "genre": verify_user[5],
         }
         data.append(new_dj_data)
         return new_dj_data
 
 
-def delete():
-    print([i['name'] for i in djs], 'Please choose DJ name to remove :')
+def delete(data):
+    print([i['name'] for i in djs], 'Please choose DJ name to remove :', end="")
     name_to_del = input()
     for i in djs:
         if i["name"] == name_to_del:
             print(f'{i["name"]} was deleted')
             djs.remove(i)
-def update():
-    print([i['name'] for i in djs], 'Please choose DJ name to update : ',end="")
+    return data
+
+def update(data):
+    print([i['name'] for i in djs], 'Please choose DJ name to update : ', end="")
     name_to_update = input()
     for i in djs:
         if i["name"] == name_to_update:
             user_input = input("Enter new DJ's data: ").split(',')
-            validated_data = validate_dj_data(user_input)
-            if validated_data is not False:
-
-                i["name"] = validated_data[0]
-                i["age"] = validated_data[1]
-                i["equipment"] = validated_data[2]
-                i["discography"] = validated_data[3]
-                i["salary"] = validated_data[4]
-                i["genre"] = validated_data[5]
+            verify_user = verify(user_input)
+            if verify_user is not False:
+                i["name"] = verify_user[0]
+                i["age"] = verify_user[1]
+                i["equipment"] = verify_user[2]
+                i["discography"] = verify_user[3]
+                i["salary"] = verify_user[4]
+                i["genre"] = verify_user[5]
                 print(f'{name_to_update} update to {i["name"]}')
+    return data
 
 if __name__ == "__main__":
     djs = [tiesto, avicci, anna]
     allowed_options = "[add/list/names/delete/update/quit]"
     trigger = True
-
 
     while trigger:
         start = input(f"What should I do?{allowed_options}: ")
@@ -105,9 +107,9 @@ if __name__ == "__main__":
             if new_dj:
                 print(f"DJ {new_dj['name']} is added!")
         elif start == 'delete':
-           delete()
+            delete(djs)
         elif start == 'update':
-            update()
+            update(djs)
         elif start == "list":
             pprint(djs)
         elif start == "names":
