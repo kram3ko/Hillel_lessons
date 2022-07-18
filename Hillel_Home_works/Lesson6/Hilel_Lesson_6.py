@@ -51,9 +51,8 @@ def verify(data):
 
 
 def add_new_dj(data):
-    user_input = input("Enter new DJ's data: ")
-    dj_data = user_input.split(",")
-    verify_user = verify(dj_data)
+    user_input = input("Enter new DJ's data: ").split(',')
+    verify_user = verify(user_input)
 
     if verify_user is not False:
         new_dj_data = {
@@ -103,7 +102,7 @@ if __name__ == "__main__":
         start = input(f"What should I do?{allowed_options}: ")
         if start == "add":
             print("DJ input format: name,age,equipment,discography,salary,genre")
-            new_dj = add_user(djs)
+            new_dj = add_new_dj(djs)
             if new_dj:
                 print(f"DJ {new_dj['name']} is added!")
         elif start == 'delete':
