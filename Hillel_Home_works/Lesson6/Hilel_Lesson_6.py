@@ -75,44 +75,46 @@ def delete():
             print(f'{i["name"]} was deleted')
             djs.remove(i)
 def update():
-    print([i['name'] for i in djs], 'Please choose DJ name to update :')
+    print([i['name'] for i in djs], 'Please choose DJ name to update : ',end="")
     name_to_update = input()
     for i in djs:
         if i["name"] == name_to_update:
-            user_input = input("Enter new DJ's data: ").split(",")
+            user_input = input("Enter new DJ's data: ").split(',')
             validated_data = validate_dj_data(user_input)
             if validated_data is not False:
-               i["name"] = validated_data[0]
-               i["age"] = validated_data[1]
-               i["equipment"] = validated_data[2]
-               i["discography"] = validated_data[3]
-               i["salary"] = validated_data[4]
-               i["genre"] = validated_data[5]
 
+                i["name"] = validated_data[0]
+                i["age"] = validated_data[1]
+                i["equipment"] = validated_data[2]
+                i["discography"] = validated_data[3]
+                i["salary"] = validated_data[4]
+                i["genre"] = validated_data[5]
+                print(f'{name_to_update} update to {i["name"]}')
 
 if __name__ == "__main__":
     djs = [tiesto, avicci, anna]
-    allowed_options = "[add/list/names/delete/update/exit]"
+    allowed_options = "[add/list/names/delete/update/quit]"
+    trigger = True
 
 
-    while True:
-        desision = input(f"What should I do?{allowed_options}: ")
-        if desision == "add":
+    while trigger:
+        start = input(f"What should I do?{allowed_options}: ")
+        if start == "add":
             print("DJ input format: name,age,equipment,discography,salary,genre")
             new_dj = add_user(djs)
             if new_dj:
                 print(f"DJ {new_dj['name']} is added!")
-        elif desision == 'delete':
+        elif start == 'delete':
            delete()
-        elif desision == 'update':
+        elif start == 'update':
             update()
-        elif desision == "list":
+        elif start == "list":
             pprint(djs)
-        elif desision == "names":
-            data = [dj["name"] for dj in djs]
-            pprint(data)
-        elif desision == "exit":
-            print("Exiting...")
-            break
+        elif start == "names":
+            dj_list = [i["name"] for i in djs]
+            pprint(dj_list)
+        elif start == "quit":
+            print("See you later...")
+            trigger = False
         else:
             print(f"Please use allowed options! {allowed_options}")
