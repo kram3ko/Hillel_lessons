@@ -16,17 +16,52 @@ class Car:
     def full_info(self):
         print(f" Model: {self.model_name}, year product: {self.production}, Who made: {self.company}, "
               f"Engine liters: {self.engine}, Colour: {self.colour}, Price sell: {self.price}")
+    def get_model(self):
+        return self.model_name
+    def change_colour(self):
+        return self.colour
+    def change_price(self):
+        return self.price
 
 
+
+tesla1 = Car(
+    model_name="Tesla_p90",
+    production=2001,
+    company="Ilon_Mask",
+    engine=0,
+    colour="white",
+    price=20_000,
+)
+bmw1 = Car(
+    model_name="M5",
+    production=2021,
+    company="BMW",
+    engine=4.5,
+    colour="Red",
+    price=90_000,
+)
+vw = Car(
+    model_name="Polo_sedan",
+    production=2022,
+    company="Volkswagen",
+    engine=1.5,
+    colour="white",
+    price=17_000,
+)
 
 class Book:
-    def __init__(self, book_name, production, publishing, genre, author, price):
+    def __init__(self, book_name, publication, publisher, genre, author, price):
         self.book_name = book_name
-        self.publishing = production
-        self.production = publishing
+        self.publishing = publication
+        self.production = publisher
         self.genre = genre
         self.engine = author
         self.price = price
+
+harry = Book("Philosopher's Stone", 1997, "Bloomsbury", "fantasy","J.K.Rowling", 20000)
+blade = Book("Blade",1973, "Marvel Comics", "comics","Erik Brus",1000)
+toys = Book("Toys Story", 1995,"Buena Vista Pictures Distribution", "comedy", "Pixar Animation Studios",1000)
 
 
 class Stadium:
@@ -37,15 +72,20 @@ class Stadium:
         self.city = city
         self.place = place
 
+stad1 = Stadium("Parken", 1992, "Denmark", "Copenhagen","Østerbro")
+stad2 = Stadium("OSC Metalist", 1926, "Ukraine", "Kharkov", "gagarinplace")
+stad3 = Stadium("New York City",2013,"Usa","New York","	The Bronx")
+
 
 if __name__ == "__main__":
-    car_list = []
-    book_list = []
-    stad_list = []
-    allowed_options = "[qadd/add/listdict/list/names/del/update/quit]"
+    car_list = [tesla1,bmw1,vw]
+    book_list = [harry,blade,toys]
+    stad_list = [stad1,stad2,stad3]
+    allowed_options = "[qadd/add/listdict/list/names/delete/update/quit]"
+    update_functions = "[colour/model/price]"
 
     while True:
-        function_todo = input(f'What gonna do? {allowed_options}')
+        function_todo = input(f'What gonna do? {allowed_options}: ')
         if function_todo == "qadd":
             new_qcar = Car(input(f'Model name :'))
             if new_qcar:
@@ -67,6 +107,11 @@ if __name__ == "__main__":
             for cars in car_list:
                 cars.model_names_show()
         elif function_todo == "update":
-           car_to_update = input()
-           if car_to_update in car_list:
-               print('yes')
+            update = input(f"choose what to do {update_functions}:")
+            if update == "colour":
+                vw.colour = input('Set colour: ')
+
+
+        elif function_todo == "quit":
+            print("see you later")
+            break
