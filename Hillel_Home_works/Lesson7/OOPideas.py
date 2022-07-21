@@ -1,92 +1,72 @@
 from pprint import pprint
 
-anna_data = {
-    "name": "Anna",
-    "age": 24,
-    "equipment": "Synth",
-    "discography": 3,
-    "salary": 3_000,
-    "genre": "techno",
-    "male": False
-}
+class Car:
+    def __init__(self, model_name=None, production=None, company=None, engine=None, colour=None, price=None):
+        self.new_car_data(model_name,production,company,engine,colour,price)
+
+    def new_car_data(self, model_name_new, production_new, company_new, engine_new, colour_new, price_new):
+        self.model_name = model_name_new
+        self.production = production_new
+        self.company = company_new
+        self.engine = engine_new
+        self.colour = colour_new
+        self.price = price_new
+    def model_names_show(self):
+        print(f"Cars in list Model: {self.model_name}  company {self.company}")
+    def full_info(self):
+        print(f" Model: {self.model_name}, year product: {self.production}, Who made: {self.company}, "
+              f"Engine liters: {self.engine}, Colour: {self.colour}, Price sell: {self.price}")
 
 
-class Dj:
 
-    dj_list = []
-
-    def __init__(self, name, age, equipment, discography, salary, genre, male):
-        self.name = name
-        self.age = age
-        self.equipment = equipment
-        self.discography = discography
-        self.salary = salary
+class Book:
+    def __init__(self, book_name, production, publishing, genre, author, price):
+        self.book_name = book_name
+        self.publishing = production
+        self.production = publishing
         self.genre = genre
-        self.male = male
-        Dj.dj_list.append(self)
-    def names(self):
-        print(f'Dj names are {self.name}')
-    def show_short_details(self):
-        if self.male is True:
-            message = "He is"
-        else:
-            message = "She is"
-        print(f"{message} {self.name}, {self.age} years old")
-    def delete(self):
-        for dj in Dj.dj_list:
-            if dj.name == self.name:
-                 Dj.dj_list.remove(dj)
+        self.engine = author
+        self.price = price
 
-tiesto = Dj(
-    name="Tiesto",
-    age=55,
-    equipment="Pioneer",
-    discography=20,
-    salary=30_000,
-    genre="lite-house",
-    male=True
-)
 
-avicci = Dj(
-    name="Avicci",
-    age=22,
-    equipment="Pioneer",
-    discography=40,
-    salary=0,
-    genre="adm",
-    male=True
-)
-
-anna = Dj(**anna_data)
+class Stadium:
+    def __init__(self, stadium_name, date_open, country, city, place):
+        self.stadium_name = stadium_name
+        self.date_open = date_open
+        self.country = country
+        self.city = city
+        self.place = place
 
 
 if __name__ == "__main__":
-    # djs = [tiesto, avicci, anna]
-    allowed_options = "[add/list/names/delete/update/quit]"
-    trigger = True
+    car_list = []
+    book_list = []
+    stad_list = []
+    allowed_options = "[qadd/add/listdict/list/names/del/update/quit]"
 
-    while trigger:
-        start = input(f"What should I do?{allowed_options}: ")
-        if start == "add":
-            djs.append(Dj(input(f"Enter name DJ: "),int(input(f"age: ")),input(f'equipment: '),int(input(f"discography: ")),
-                    int(input(f"salary: ")),input(f'genre:'),input(f'male:')))
-
-        elif start == 'delete':
-            Dj.delete(input('dsds:'))
-        elif start == 'update':
-            print(Dj.dj_list)
-        elif start == "shortlist":
-            for dj in djs:
-                dj.show_short_details()
-        elif start == "list":
-            for dj in djs:
-                pprint(dj.__dict__)
-
-        elif start == "names":
-            for dj in djs:
-                dj.names()
-        elif start == "quit":
-            print("See you later...")
-            trigger = False
-        else:
-            print(f"Please use allowed options! {allowed_options}")
+    while True:
+        function_todo = input(f'What gonna do? {allowed_options}')
+        if function_todo == "qadd":
+            new_qcar = Car(input(f'Model name :'))
+            if new_qcar:
+                car_list.append(new_qcar)
+                print(f"New Model shorts {new_qcar.model_name}")
+        elif function_todo == "add":
+            new_car = Car(input(f"model_name: "),int(input(f"car_production: ")),input(f'company_name: '),
+                          float(input(f"engine: ")),input(f"colour: "),int(input(f'price: ')))
+            if new_car:
+                print(f'New car data {new_car.model_name} is added')
+                car_list.append(new_car)
+        elif function_todo == "listdict":
+            for cars in car_list:
+                pprint(cars.__dict__)
+        elif function_todo == "list":
+            for cars in car_list:
+                cars.full_info()
+        elif function_todo == "names":
+            for cars in car_list:
+                cars.model_names_show()
+        elif function_todo == "update":
+           car_to_update = input()
+           if car_to_update in car_list:
+               print('yes')
