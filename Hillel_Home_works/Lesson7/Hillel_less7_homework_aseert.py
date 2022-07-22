@@ -1,16 +1,16 @@
-from pprint import pprint
+# from pprint import pprint
 
 
 # Car Class things
 class Car:
-    # class atribute
-    engine_type = 'Electic'
+    # class attribute
+    engine_type = 'Electric'
     engine_power = 600
 
-    # Class exaple init atribute
+    # Class example init attribute
 
     def __init__(self, model_name: str, production: int, company: str, engine: float, colour: str, price: float):
-        self.assertdata(model_name, production, company, engine, colour, price)
+        self.data_assert(model_name, production, company, engine, colour, price)
         self.model_name = model_name
         self.production = production
         self.company = company
@@ -18,7 +18,8 @@ class Car:
         self.colour = colour
         self.price = price
 
-    def assertdata(self,model_name, production, company,engine , colour , price):
+    @staticmethod
+    def data_assert(model_name, production, company, engine, colour, price):
         assert isinstance(model_name, str), f'Not str value: ({model_name}) should be string'
         assert isinstance(production, int), f'Not int value: ({production}) should be int'
         assert isinstance(company, str), f'Not str value: ({company}) please write str'
@@ -26,9 +27,8 @@ class Car:
         assert isinstance(colour, str), f'Not str value: ({colour}) should be string'
         assert isinstance(price, (float, int)), f'Not float value: ({price}) please write float or int'
 
-
     def new_car_data(self, model_name_new, production_new, company_new, engine_new, colour_new, price_new):
-        self.assertdata(model_name_new, production_new, company_new, engine_new, colour_new, price_new)
+        self.data_assert(model_name_new, production_new, company_new, engine_new, colour_new, price_new)
         self.model_name = model_name_new
         self.production = production_new
         self.company = company_new
@@ -42,7 +42,7 @@ class Car:
     def full_info(self):
         print(f" Model: {self.model_name}, year product: {self.production}, Who made: {self.company}, "
               f"Engine liters: {self.engine}, Colour: {self.colour}, Price sell: {self.price} "
-              f"extra enginepower {self.engine_power} and {self.engine_type}")
+              f"extra engine-power: {self.engine_power} and engine-type: {self.engine_type}")
 
     def get_model(self):
         return self.model_name
@@ -58,14 +58,14 @@ class Car:
         return print(f'Engine type now {self.engine_type},Power now {self.engine_power}, was changed')
 
 
-# Cars initing by __init__ auto ways
+# Cars init by __init__ auto ways
 
-testcar = Car("Tiguan", 2017, "VW", 4.5, "red", 25_000)
+test_car = Car("Tiguan", 2017, "VW", 4.5, "red", 25_000)
 
 tesla1 = Car(
     model_name="Tesla_p90",
     production=2001,
-    company="Ilon_Mask",
+    company="Tesla Motors",
     engine=0,
     colour="white",
     price=20_000,
@@ -97,14 +97,14 @@ class Book:
         self.author = author
         self.price = price
 
-    def model_bookname_show(self):
+    def show_book_names(self):
         print(f"books in list names: {self.book_name}  company {self.author}")
 
     def full_info(self):
         print(f" Book_name: {self.book_name}, publication: {self.publication}, publisher: {self.publisher}, "
               f"genre: {self.genre}, author: {self.author}, Price sell: {self.price}")
 
-    def get_book_autor(self):
+    def get_book_author(self):
         return self.author
 
     def change_price(self, price):
@@ -114,12 +114,12 @@ class Book:
         self.book_name = book_name
         self.genre = genre
         if not isinstance(book_name, str) and isinstance(genre, str):
-            raise ValueError(f" Bookname,genre not str type")
+            raise ValueError(f" Book name,genre not str type")
         return print(f'Book name changed to {self.book_name},genre changed to {self.genre}')
 
 
 harry = Book("Philosopher's Stone", 1997, "Bloomsbury", "fantasy", "J.K.Rowling", 20000)
-blade = Book("Blade", 1973, "Marvel Comics", "comics", "Erik Brus", 1000)
+blade = Book("Blade", 1973, "Marvel Comics", "comics", "Erik. Br's", 1000)
 toys = Book("Toys Story", 1995, "Buena Vista Pictures Distribution", "comedy", "Pixar Animation Studios", 1000)
 
 
@@ -135,7 +135,7 @@ class Stadium:
         print(f"Stadium name: {self.stadium_name}  country {self.country}")
 
     def full_info(self):
-        print(f" Stadion name: {self.stadium_name}, dateopen: {self.date_open}, country: {self.country}, "
+        print(f" Stadium name: {self.stadium_name}, date open: {self.date_open}, country: {self.country}, "
               f"city: {self.city}, place: {self.place}")
 
 
@@ -152,7 +152,7 @@ setattr(Stadium, "Hilel_home_work", 'Practice')
 
 # if __name__ == "__main__":
 #
-#     car_list = [tesla1, bmw1, vw]
+#     car_list = [tesla1, bmw1, vw, test_car]
 #     book_list = [harry, blade, toys]
 #     stad_list = [stad1, stad2, stad3]
 #
@@ -186,8 +186,6 @@ setattr(Stadium, "Hilel_home_work", 'Practice')
 #             update = input(f"choose what to do {update_functions}:")
 #             if update == "colour":
 #                 vw.colour = input('Set colour: ')
-#
-#
 #         elif function_todo == "quit":
 #             print("see you later")
 #             break
