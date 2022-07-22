@@ -29,7 +29,8 @@ class Car:
         print(f"Cars in list Model: {self.model_name}  company {self.company}")
     def full_info(self):
         print(f" Model: {self.model_name}, year product: {self.production}, Who made: {self.company}, "
-              f"Engine liters: {self.engine}, Colour: {self.colour}, Price sell: {self.price}")
+              f"Engine liters: {self.engine}, Colour: {self.colour}, Price sell: {self.price} "
+              f"extra_arr_class enginepower {self.engine_power} and {self.engine_type}")
     def get_model(self):
         return self.model_name
     def change_colour(self,colour):
