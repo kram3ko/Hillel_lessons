@@ -7,22 +7,22 @@ print(sorted(Path('.').glob('*.*')))
 class File:
     @staticmethod
     def read_last_10_lines():
-        with open("text.txt", mode="r", encoding="utf-8") as file:
+        with open(filename, mode="r", encoding="utf-8") as file:
             print(*(file.read().split("\n")[-10:]), sep='\n')
 
     @staticmethod
     def read_first_10_lines():
-        with open("text.txt", mode="r", encoding="utf-8") as file:
+        with open(filename, mode="r", encoding="utf-8") as file:
             print(*(file.read().split("\n")[:11]), sep='\n')
 
     @staticmethod
     def read_all_file():
-        with open("text.txt", mode="r", encoding="utf-8") as file:
+        with open(filename, mode="r", encoding="utf-8") as file:
             return file.read()
 
     @staticmethod
     def find_longest_word():
-        with open("text.txt", mode="r", encoding="utf-8") as file:
+        with open(filename, mode="r", encoding="utf-8") as file:
             words_in_text = file.read()
             words_in_text = words_in_text.replace(",", "")
             words_in_text = words_in_text.replace(".", "")
@@ -32,7 +32,7 @@ class File:
 
     @staticmethod
     def lines_number():
-        with open("text.txt", mode="r", encoding="utf-8") as file:
+        with open(filename, mode="r", encoding="utf-8") as file:
             count = 0
             for _ in file:
                 count += 1
@@ -40,7 +40,7 @@ class File:
 
     @staticmethod
     def words_frequency():
-        with open("text.txt", mode="r", encoding="utf-8") as file:
+        with open(filename, mode="r", encoding="utf-8") as file:
             words_in_text = file.read()
             words_in_text = words_in_text.replace(",", "")
             words_in_text = words_in_text.replace(".", "")
@@ -82,5 +82,5 @@ if __name__ == "__main__":
                     elif decision == "exit":
                         print(f'see you')
                         break
-            else:
-                print(f'File not exist try again')
+    else:
+        print(f'File not exist try again')
