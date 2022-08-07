@@ -98,7 +98,7 @@ class Dj:
         selected_dj = None
         for dj in cls.djs:
             if dj.name == name:
-                selected_dj = dj
+                selected_dj = dj.name
                 break
 
         if selected_dj is None:
@@ -157,7 +157,7 @@ if __name__ == "__main__":
                 print(f'DJ {updated_dj.name} is updated!')
         elif desision == "delete":
             delete_name = input("Input DJ's name for delete: ")
-            deleted = Dj.delete(name)
+            deleted = Dj.delete(delete_name)
             if deleted is True:
                 print(f'DJ {delete_name} is deleted!')
         elif desision == "exit":
