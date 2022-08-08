@@ -19,10 +19,11 @@ def expected(*types: type):
     return decorator
 
 
-@expected(int,str,tuple)
-def check_type(type):
-    return type
+@expected(int, str, tuple)
+def check_type(arg):
+    return arg
+
 
 check_type(123)
-check_type((1,3,"{}"))
+check_type((1, 3, "{}"))
 check_type({})
