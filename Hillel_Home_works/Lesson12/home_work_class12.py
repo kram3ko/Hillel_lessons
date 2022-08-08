@@ -23,14 +23,14 @@ class File:
         words_in_text = words_in_text.replace(",", "")
         words_in_text = words_in_text.replace(".", "")
         max_len_word = words_in_text.split()
-        return (f'Maximal len of word in file is: {max(max_len_word, key=len)}')
+        return f'Maximal len of word in file is: {max(max_len_word, key=len)}'
 
     @staticmethod
     def lines_number():
         count = 0
         for _ in file:
             count += 1
-        return (f"Total lines in file: {count}")
+        return f"Total lines in file: {count}"
 
     @staticmethod
     def words_frequency():

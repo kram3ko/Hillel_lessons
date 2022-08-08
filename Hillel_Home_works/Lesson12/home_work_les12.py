@@ -16,41 +16,41 @@ if __name__ == "__main__":
                 print()
                 while True:
                     decision = input(f'What i should do: {funcs}: ')
-                    if decision == "a": # read_last_10_lines
+                    if decision == "a":  # read_last_10_lines
                         print(*(file.read().split("\n")[-10:]), sep='\n')
                         file.seek(0)
-                    elif decision == "b": # read_first_10_lines
+                    elif decision == "b":  # read_first_10_lines
                         print(*(file.read().split("\n")[:11]), sep='\n')
                         file.seek(0)
-                    elif decision == "c": # read_all_file
+                    elif decision == "c":  # read_all_file
                         print(file.read())
                         file.seek(0)
-                    elif decision == "d": # findlongword
-                            words_in_text = file.read()
-                            words_in_text = words_in_text.replace(",", "")
-                            words_in_text = words_in_text.replace(".", "")
+                    elif decision == "d":  # findlongword
+                        words_in_text = file.read()
+                        words_in_text = words_in_text.replace(",", "")
+                        words_in_text = words_in_text.replace(".", "")
 
-                            max_len_word = words_in_text.split()
-                            print(f'Maximal len of word in file is: {max(max_len_word, key=len)}')
-                            file.seek(0)
-                    elif decision == "e": # amountline
-                            count = 0
-                            for _ in file:
-                                count += 1
-                            print(f"Total lines in file: {count}")
-                            file.seek(0)
-                    elif decision == "f": #repeatwords
-                            words_in_text = file.read()
-                            words_in_text = words_in_text.replace(",", "")
-                            words_in_text = words_in_text.replace(".", "")
+                        max_len_word = words_in_text.split()
+                        print(f'Maximal len of word in file is: {max(max_len_word, key=len)}')
+                        file.seek(0)
+                    elif decision == "e":  # amountline
+                        count = 0
+                        for _ in file:
+                            count += 1
+                        print(f"Total lines in file: {count}")
+                        file.seek(0)
+                    elif decision == "f":  # repeatwords
+                        words_in_text = file.read()
+                        words_in_text = words_in_text.replace(",", "")
+                        words_in_text = words_in_text.replace(".", "")
 
-                            counter_words = {}
-                            words = words_in_text.split()
-                            for word in words:
-                                if word.isalpha():
-                                    counter_words[word] = counter_words.get(word, 0) + 1
-                            pprint(counter_words)
-                            file.seek(0)
+                        counter_words = {}
+                        words = words_in_text.split()
+                        for word in words:
+                            if word.isalpha():
+                                counter_words[word] = counter_words.get(word, 0) + 1
+                        pprint(counter_words)
+                        file.seek(0)
                     elif decision == "exit":
                         print(f'see you')
                         break
