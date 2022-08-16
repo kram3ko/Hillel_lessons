@@ -62,7 +62,6 @@ class Dj:
         for dj in Dj.djs_csv:
             print(f'He is: {dj["name"]}, {dj["age"]} years old' if dj["male"] == "True"
                   else f'She is: {dj["name"]}, {dj["age"]} years old')
-            # dj.show_short_details()
 
     @classmethod
     def names_csv(cls):
