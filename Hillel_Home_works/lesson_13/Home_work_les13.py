@@ -31,7 +31,7 @@ class Dj:
         print(
             "Update DJ's data by format: name,age,equipment,discography,salary,genre,male: "
         )
-        user_input = input("Enter new DJ's data: ")
+        user_input = input("Enter new DJ's 🧑‍🎤 data : ")
         dj_data = user_input.split(",")
         new_dj = cls.validate(dj_data)
         if new_dj is not None:
@@ -136,7 +136,7 @@ if __name__ == "__main__":
                 print(f"DJ {new_dj.name} is added!")
         elif decision == "update":
             print([dj["name"] for dj in Dj.djs_csv])
-            name = input("Input DJ's name for update: ")
+            name = input("Input DJ's 🧑‍🎤 name for update: ")
             updated_dj = Dj.update_csv(name)
             if updated_dj:
                 print(f"DJ {name} updated to: {updated_dj['name']}")
