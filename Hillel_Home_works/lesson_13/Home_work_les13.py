@@ -1,11 +1,8 @@
 import csv
-import json
-from pprint import pprint
 
 
 class Dj:
     # This is a list of all djs
-    djs = []
     djs_csv = []
 
     def __init__(self, name, age, equipment, discography, salary, genre, male):
@@ -64,6 +61,7 @@ class Dj:
                 dj["genre"] = data_for_update["genre"]
                 dj["male"] = data_for_update["male"]
                 return dj
+
     @classmethod
     def list_csv(cls):
         for dj in Dj.djs_csv:
