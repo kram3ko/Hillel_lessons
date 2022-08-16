@@ -28,15 +28,10 @@ class Dj:
 
     @classmethod
     def add_csv(cls):
-        print(
-            "Update DJ's data by format: name,age,equipment,discography,salary,genre,male: "
-        )
-        user_input = input("Enter new DJ's 🧑‍🎤 data : ")
-        dj_data = user_input.split(",")
-        new_dj = cls.validate(dj_data)
-        if new_dj is not None:
-            Dj.djs_csv.append(new_dj.as_dict)
-            return new_dj
+        print("Update DJ's data by format: name,age,equipment,discography,salary,genre,male: ")
+        Dj.djs_csv.append(cls.validate(input("Enter new DJ's 🧑‍🎤 data : ").split(",")).as_dict)
+        if Dj.djs_csv:
+            return f'Dj name: {Dj.djs_csv[-1]["name"]} is added'
 
     @classmethod
     def delete_csv(cls, name):
@@ -132,8 +127,7 @@ if __name__ == "__main__":
         elif decision == "add":
             print("DJ input format: name,age,equipment,discography,salary,genre,male")
             new_dj = Dj.add_csv()
-            if new_dj:
-                print(f"DJ {new_dj.name} is added!")
+            print(new_dj)
         elif decision == "update":
             print([dj["name"] for dj in Dj.djs_csv])
             name = input("Input DJ's 🧑‍🎤 name for update: ")
