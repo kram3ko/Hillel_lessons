@@ -48,13 +48,8 @@ class Dj:
             if dj["name"] == name:
                 print("Update DJ's data by format: name,age,equipment,discography,salary,genre,male: ")
                 data_for_update = cls.validate(input("Enter new DJ's data: ").split(",")).as_dict
-                dj["name"] = data_for_update["name"]
-                dj["age"] = data_for_update["age"]
-                dj["equipment"] = data_for_update["equipment"]
-                dj["discography"] = data_for_update["discography"]
-                dj["salary"] = data_for_update["salary"]
-                dj["genre"] = data_for_update["genre"]
-                dj["male"] = data_for_update["male"]
+                for new_data in dj:
+                    dj[new_data] = data_for_update[new_data]
                 return dj
 
     @classmethod
