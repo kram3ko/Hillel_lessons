@@ -1,6 +1,6 @@
 from pathlib import Path
 from pprint import pprint
-
+from string import punctuation
 print(sorted(Path('.').glob('*.*')))
 
 
@@ -20,8 +20,9 @@ class File:
     @staticmethod
     def find_longest_word():
         words_in_text = file.read()
-        words_in_text = words_in_text.replace(",", "")
-        words_in_text = words_in_text.replace(".", "")
+        for punc in punctuation:
+            if punc in words_in_text:
+                words_in_text = words_in_text.replace(punc, "")
         max_len_word = words_in_text.split()
         return f'Maximal len of word in file is: {max(max_len_word, key=len)}'
 
@@ -35,8 +36,9 @@ class File:
     @staticmethod
     def words_frequency():
         words_in_text = file.read()
-        words_in_text = words_in_text.replace(",", "")
-        words_in_text = words_in_text.replace(".", "")
+        for punc in punctuation:
+            if punc in words_in_text:
+                words_in_text = words_in_text.replace(punc, "")
         counter_words = {}
         words = words_in_text.split()
         for word in words:
