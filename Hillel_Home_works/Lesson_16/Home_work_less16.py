@@ -11,14 +11,12 @@ import re
 
 
 def remove_url_anchor(url):
-    return re.sub('#\w{1,}','', url)
-    # re.search(r'(.*)#', 'lms.ithillel.ua/groups/?page=1#example').group(1)
-    # re.sub('#.*', '', 'lms.ithillel.ua#about')
-    # return re.search(r"\w+\.\w+\.\w+", url)[0]
+    # return re.sub('#\w{1,}', '', url)
+    return re.sub("#.*", "", url)
+
 
 assert remove_url_anchor("lms.ithillel.ua#about") == "lms.ithillel.ua"
 assert remove_url_anchor("lms.ithillel.ua/groups/?page=1#example") == "lms.ithillel.ua/groups/?page=1"
 assert remove_url_anchor("lms.ithillel.ua/groups/") == "lms.ithillel.ua/groups/"
-
 
 print('Assert went well')
