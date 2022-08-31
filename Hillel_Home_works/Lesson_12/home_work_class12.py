@@ -19,12 +19,17 @@ class File:
 
     @staticmethod
     def find_longest_word():
+        last_longest_word = ''
         words_in_text = file.read()
         for punc in punctuation:
             if punc in words_in_text:
                 words_in_text = words_in_text.replace(punc, "")
         max_len_word = words_in_text.split()
-        return f'Maximal len of word in file is: {max(max_len_word, key=len)}'
+        for long_word in max_len_word:
+            if len(long_word) >= len(last_longest_word):
+                last_longest_word = long_word
+        return last_longest_word
+        # return f'Maximal len of word in file is: {max(max_len_word, key=len)}'
 
     @staticmethod
     def lines_number():

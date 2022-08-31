@@ -11,7 +11,7 @@ import re
 
 
 def remove_url_anchor(url):
-    return (re.sub('#\w{1,}','', url))
+    return re.sub('#\w{1,}','', url)
     # re.search(r'(.*)#', 'lms.ithillel.ua/groups/?page=1#example').group(1)
     # re.sub('#.*', '', 'lms.ithillel.ua#about')
     # return re.search(r"\w+\.\w+\.\w+", url)[0]
