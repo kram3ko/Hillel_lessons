@@ -108,7 +108,7 @@ async def run_async(rockets):
 def run_super():
     """Start 1000 thread by 100 rockets"""
     async_rockets = [AsyncRocket(name=f"Rocket {i}") for i in range(1, 100_000)]
-    async_rockets = [async_rockets[_:_+100] for _ in range(1,len(async_rockets), 100)]
+    async_rockets = [async_rockets[_:_ + 100] for _ in range(1, len(async_rockets), 100)]
 
     def run_hundred_threads():
         asyncio.run(run_async(async_rockets[i]))
@@ -117,14 +117,13 @@ def run_super():
         Thread(target=run_hundred_threads).start()
 
 
-
 # def main():
-    # rockets = [Rocket(name=f"Rocket {i}") for i in range(1, 100_000)]
-    # async_rockets = (AsyncRocket(name=f"Rocket {i}") for i in range(1, 100_000))
+# rockets = [Rocket(name=f"Rocket {i}") for i in range(1, 100_000)]
+# async_rockets = (AsyncRocket(name=f"Rocket {i}") for i in range(1, 100_000))
 
-    # run_sync_one_thread(rockets)
-    # run_in_threads(rockets)
-    # asyncio.run(run_async(async_rockets))
+# run_sync_one_thread(rockets)
+# run_in_threads(rockets)
+# asyncio.run(run_async(async_rockets))
 
 if __name__ == "__main__":
     run_super()
